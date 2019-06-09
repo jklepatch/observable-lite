@@ -1,0 +1,17 @@
+{
+  "name": "observable-lite",
+  "version": "0.1.0",
+  "description": "Super simple implementation of Observable in Nodejs. Inspired by RxJS.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jklepatch/observable-lite.git"
+  },
+  "keywords": ["observable", "rxjs", "pub-sub", "reactive programming" ],
+  "author": "Julien Klepatch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jklepatch/observable-lite/issues"
+  },
+  "homepage": "https://github.com/jklepatch/observable-lite#readme"
+}
