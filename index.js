@@ -2,6 +2,18 @@ class Subscription {
   constructor(callbacks) {
     this.callbacks = callbacks;
     this.isComplete = false;
+    this._unsubscribe = undefined;
+  }
+
+  execute(subject) {
+    const unsubscribe = subject(this);
+    if(typeof unsubscribe !== 'undefined' && typeof unsubscribe !== 'function') {
+      throw new Error('Subject must return an unsubscribe function or nothing');
+      return;
+    }
+    if(typeof unsubscribe === 'function') {
+      this._unsubscribe = unsubscribe;
+    }
   }
 
   next(val) {
@@ -24,6 +36,7 @@ class Subscription {
   }
 
   unsubscribe() {
+    if(typeof this._unsubscribe === 'function') this._unsubscribe();
     this.isComplete = true;
   }
 }
@@ -37,7 +50,8 @@ class Observable {
   subscribe(callbacks) {
     if (typeof callbacks !== 'object') throw new Error('callbacks must be an object');
     const subscription = new Subscription(callbacks);
-    this.subject(subscription);
+    subscription.execute(this.subject);
+    //this.subject(subscription);
     return subscription;
   }
 }

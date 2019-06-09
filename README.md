@@ -37,7 +37,6 @@ const subscription = observable.subscribe({
   complete() { console.log() }  
 });
 
-
 setTimeout(() => subscription.unsubscribe(), 1000);
 
 /**
@@ -47,4 +46,6 @@ setTimeout(() => subscription.unsubscribe(), 1000);
  * 3
  */
 ```
+
+More examples in `examples` folder.
 
